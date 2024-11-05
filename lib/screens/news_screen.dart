@@ -49,11 +49,15 @@ class NewsScreen extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(15),
                 child: Image(
+                  errorBuilder:  (context, error, stackTrace) {
+                    return Image(image: AssetImage('images/noImage.png'),
+                      height: 180,
+                      width: double.infinity,
+                      fit: BoxFit.fill,);
+                  },
                   image: NetworkImage(
-                    newsModel.urlToImage ??
-                        'https://www.google.com/url?sa=i&url=https%3A%2F%2Fdepositphotos.com%2Fvectors%2Fno-image-available.html&psig=AOvVaw1PPr64TkdZlyNZaesoFYvl&ust=1730843706557000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOD5i7TVw4kDFQAAAAAdAAAAABAE',
-                  ),
-                  height: 150,
+                    newsModel.urlToImage??''),
+                  height: 180,
                   width: double.infinity,
                   fit: BoxFit.fill,
                 ),

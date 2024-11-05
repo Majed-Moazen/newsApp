@@ -7,14 +7,14 @@ class CubitNews extends Cubit<CubitState> {
   CubitNews() : super(InitState());
   void getDataNews()
  async {
-    // try {
+    try {
       emit(LoadingState());
       ServerManager serverManager = ServerManager();
       await serverManager.getNews();
       emit(LoadedSuccessState(newsModel: serverManager.newsModelList));
-    // }
-    // catch(e){
-    //   emit(LoadedErrorState(error: e.toString()));
-    // }
+    }
+    catch(e){
+      emit(LoadedErrorState(error: e.toString()));
+    }
   }
 }

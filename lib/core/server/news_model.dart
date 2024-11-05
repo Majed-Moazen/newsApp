@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class NewsModel {
   String source;
   String title;
@@ -14,7 +16,7 @@ class NewsModel {
       description: data['description'] ,
       source: data['source']['name'] ,
       urlToImage: data['urlToImage'] ,
-      dateTime: data['publishedAt'] ,
+      dateTime:DateFormat("MMM dd.yyyy").format(DateTime.parse(data['publishedAt'])),
     );
   }
 }
