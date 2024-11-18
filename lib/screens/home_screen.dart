@@ -162,7 +162,7 @@ class HomeScreen extends StatelessWidget {
                       itemCount: state.newsModel.length,
                       itemBuilder: (BuildContext context, int index) {
                         return ItemNews(
-                            isNew: index < 3,
+                            // isNew: index < 3,
                             newsModel: state.newsModel[index]);
                       }),
                 ],

@@ -6,11 +6,11 @@ import 'package:news_app/screens/news_screen.dart';
 class ItemNews extends StatelessWidget {
   const ItemNews({
     super.key,
-    required this.isNew,
+    // required this.isNew,
     required this.newsModel,
   });
 
-  final bool isNew;
+  // final bool isNew;
   final NewsModel newsModel;
 
   @override
@@ -33,14 +33,14 @@ class ItemNews extends StatelessWidget {
             boxShadow: const [BoxShadow(color: Colors.grey, blurRadius: 8)]),
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
         width: double.infinity,
-        height: 100,
+        height:  MediaQuery.of(context).size.height*0.2,
         child: Row(
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: CachedNetworkImage(
                 width: 100,
-                height: 100,
+                height: MediaQuery.of(context).size.height*0.2,
                 fit: BoxFit.fitHeight,
                 imageUrl: newsModel.urlToImage ?? '',
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
@@ -82,11 +82,13 @@ class ItemNews extends StatelessWidget {
                       style: const TextStyle(fontSize: 30),
                       overflow: TextOverflow.ellipsis,
                     ),
-                    Text(
-                      newsModel.dateTime,
-                      style: const TextStyle(
-                          color: Colors.grey, overflow: TextOverflow.ellipsis),
-                      maxLines: 2,
+                    Expanded(
+                      child: Text(
+                        newsModel.dateTime,
+                        style: const TextStyle(
+                            color: Colors.grey, overflow: TextOverflow.ellipsis),
+                        maxLines: 2,
+                      ),
                     ),
                   ],
                 ),
